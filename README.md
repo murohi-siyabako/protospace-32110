@@ -13,8 +13,7 @@
 
 ### Association
 
-- has_many :prototypes_users
-- has_many :prototypes, through: prototypes_users
+- has_many :prototypes
 - has_many :comments
 
 ## prototypes テーブル
@@ -28,21 +27,8 @@
 
 ### Association
 
-- has_many :prototypes_users
-- has_many :users, through: prototypes_users
-- has_many :comments
-
-## prototypes_users テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| prototype | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :prototype
 - belongs_to :user
+- has_many :comments, dependent: :destroy
 
 ## comments テーブル
 
